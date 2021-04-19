@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foreach practice</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .drink-group {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+
+
+        }
+
+        .drink-card {
+            width: 400px;
+            height: 700px;
+            margin-bottom: 50px;
+            padding: 0 30px;
+        }
+
+        .photo {
+            width: 100%;
+            height: 70%;
+            background-color: aqua;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .content {
+            width: 100%;
+            height: 30%;
+            padding: 10px 20px 0;
+            background-color: darkgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="drink-group"></div>
+
+    </div>
+
+    <script>
+
+        var drink_group = document.querySelector('.drink-group')
+
+        // console.log(drink_group)
+
+        var drink_card = [
+
+
+            {
+                drinkphoto: "https://d2ljdmn92amnk.cloudfront.net/00/128/485/8f28aafc960ed58cfacb157f8ffbbef6.jpeg",
+                drinkname: "古早味紅茶",
+                price: "25",
+                content: "紅茶茶葉,糖"
+            },
+
+            {
+                drinkphoto: "https://pic.pimg.tw/daya1024/1568283842-1308438623_n.jpg",
+                drinkname: "珍珠紅茶",
+                price: "35",
+                content: "紅茶茶葉,糖,珍珠"
+            },
+
+            {
+                drinkphoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFcfPSq13h-WRDinH85pXnjdqyR38aRVPo5Q&usqp=CAU",
+                drinkname: "茉莉綠茶",
+                price: "25",
+                content: "綠茶茶葉,糖"
+            },
+
+            {
+                drinkphoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWHr2AnQdhMU9jB1azNptouL20LB2v0rz2kg&usqp=CAU",
+                drinkname: "高山烏龍茶",
+                price: "25",
+                content: "烏龍茶茶葉,糖"
+            }
+        ]
+
+        drink_card.forEach(product => {
+
+            console.log(product.drinkphoto);
+            console.log(product.drinkname);
+            console.log(product.price);
+            console.log(product.content);
+
+
+            // " += " 是累加的指令，只有 " = " 的話會只抓最後一個，因為前面會被覆蓋
+            drink_group.innerHTML += `
+
+            <div class="drink-card">
+            <div class="photo">
+                <img src="${product.drinkphoto}" alt="">
+            </div>
+
+            <div class="content">
+            <p>飲料名稱: ${product.drinkname} </p>
+            <p>飲料價格: ${product.price}</p>
+            <p>飲料內容: ${product.content}</p>
+            </div>
+
+            `
+        });
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
