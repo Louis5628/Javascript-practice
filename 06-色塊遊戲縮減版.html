@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>homework-方塊遊戲</title>
-
+    <title>Document</title>
     <style>
         * {
             box-sizing: border-box;
@@ -46,72 +45,52 @@
             border-radius: 8px;
         }
     </style>
-
 </head>
 
 <body>
-
     <div class="canvas">
-        <div class="game-panel">
-
-        </div>
+        <div class="game-panel"></div>
     </div>
 
     <script>
-
         var GamePanel = document.querySelector('.game-panel')
-        var level = [1,2,3,4,5,6,7,8,9]
-        // var level = 1
+        var level = 1
 
+        
 
         newGame()
 
         function newGame() {
 
-            let color = `${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)}`
+            let color = `${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)}`
+            // 產生方塊
 
+            // 調整方塊數量大小
+            // 產生一個隨機顏色，賦予方塊
             for (let index = 0; index < 9; index++) {
-                const element = level[index];
-                
-                GamePanel.innerHTML = `<div class="box" style="width:calc(100% / (${element}));height:calc(100% / ${element});background-color:rgb(${color})"></div>`
-                // console.log(element);
-
+                GamePanel.innerHTML += `<div class="box"style="width:calc(100%/3);height:calc(100%/3);background-color:rgb(${color})"></div>`
             }
 
-
+            // 隨機產生正解方塊
             var boxes = document.querySelectorAll(".box")
-            boxes[Math.floor(Math.random() * 10)].classList.add('ans')
+            boxes[Math.floor(Math.random()*10)].classList.add('ans')
             console.log(boxes);
 
-
+            // 正解方塊透明度調整
             var ans = document.querySelector(".ans")
             ans.style.opacity = 0.5
 
-
-            ans.onclick = function () {
+            // 幫正解方塊加上onclick事件
+            ans.onclick = function(){
                 alert("答對了")
-                GamePanel.innerHTML = ``
+                GamePanel.innerHTML=``
                 newGame()
             }
 
-
-
-
-
+            // 當玩家按到這個方塊(正解)的時候，開啟下一關
+            // 如果level = 10 的時候顯示過關，並重置遊戲
         }
-
-
-
-
-
-
-
     </script>
-
-
-
-
-
 </body>
 
 </html>
