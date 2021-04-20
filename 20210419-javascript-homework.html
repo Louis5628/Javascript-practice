@@ -60,8 +60,8 @@
     <script>
 
         var GamePanel = document.querySelector('.game-panel')
-        var level = [1,2,3,4,5,6,7,8,9]
-        // var level = 1
+        var level = 1
+        
 
 
         newGame()
@@ -70,47 +70,35 @@
 
             let color = `${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)}`
 
-            for (let index = 0; index < 9; index++) {
-                const element = level[index];
+            for (let index = 0; index < (level * level); index++) {
                 
-                GamePanel.innerHTML = `<div class="box" style="width:calc(100% / (${element}));height:calc(100% / ${element});background-color:rgb(${color})"></div>`
+                GamePanel.innerHTML += `<div class="box" style="width:calc(100% / ${level});height:calc(100% / ${level});background-color:rgb(${color})"></div>`
                 // console.log(element);
 
             }
 
 
             var boxes = document.querySelectorAll(".box")
-            boxes[Math.floor(Math.random() * 10)].classList.add('ans')
+            boxes[Math.floor(Math.random() * boxes.length)].classList.add('ans')
             console.log(boxes);
 
 
             var ans = document.querySelector(".ans")
-            ans.style.opacity = 0.5
+            ans.style.opacity = level / 10 - 0.05
 
 
             ans.onclick = function () {
-                alert("答對了")
+                level ++
+                if (level >= 10) {
+                    alert("恭喜過關!!")
+                    level = 1   
+                }
                 GamePanel.innerHTML = ``
                 newGame()
             }
-
-
-
-
-
         }
 
-
-
-
-
-
-
     </script>
-
-
-
-
 
 </body>
 
